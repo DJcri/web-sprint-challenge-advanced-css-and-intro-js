@@ -268,13 +268,15 @@ If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(arr) {
   /*Your Code Here*/
-  const _20sArtists = [];
-  for (let i = 0; i < arr.length; i++) {
-    const yrs = arr[i]["years"];
-    if (Number(yrs[0]) === 1 && Number(yrs[1]) === 9 && yrs.includes(" 19")) {
-      _20sArtists.push(arr[i].name);
-    }
-  }
+  let _20sArtists = arr
+    .map(function (obj) {
+      const yrs = obj.years;
+      if (Number(yrs[0]) === 1 && Number(yrs[1]) === 9 && yrs.includes(" 19")) {
+        return obj.name;
+      }
+    })
+    .filter(Boolean);
+  console.log(_20sArtists);
   return _20sArtists;
 }
 
